@@ -1,0 +1,99 @@
+{
+    
+    "room1" :{
+        "type": "Basic",
+        "name" : "",
+        "capacity": 5 ,
+        "startTime": "",
+        "endTime": ""
+
+    },
+    "room2" :{
+        "type": "Quick Standup Room",
+        "name" : "",
+        "capacity": 10,
+        "startTime": "",
+        "endTime": ""
+
+    },
+    "room3" :{
+        "type": "Multimedia Room",
+        "name" : "",
+        "capacity": 15,
+        "startTime": "",
+        "endTime": ""
+
+    },
+    "room4" :{
+        "type": "Quick Standup Room",
+        "name" : "",
+        "capacity": 10,
+        "startTime": "",
+        "endTime": ""
+
+    },
+    "room5" :{
+        "type": "Multimedia Room",
+        "name" : "",
+        "capacity": 15,
+        "startTime": "",
+        "endTime": ""
+
+    },
+    "room6" :{
+        "type": "Basic",
+        "name" : "",
+        "capacity": 5 ,
+        "startTime": "",
+        "endTime": ""
+
+    },
+    "room7" :{
+        "type": "Multimedia Room",
+        "name" : "",
+        "capacity": 15,
+        "startTime": "",
+        "endTime": ""
+
+    },
+    "room8" :{
+        "type": "Basic",
+        "name" : "",
+        "capacity": 5 ,
+        "startTime": "",
+        "endTime": ""
+
+    },
+    "room9" :{
+        "type": "Quick Standup Room",
+        "name" : "",
+        "capacity": 10,
+        "startTime": "",
+        "endTime": ""
+
+    },
+    "room10" :{
+        "type": "Basic",
+        "name" : "",
+        "capacity": 5 ,
+        "startTime": "",
+        "endTime": ""
+
+    },
+    "room11" :{
+         "type": "Quick Standup Room",
+        "name" : "",
+        "capacity": 10,
+        "startTime": "",
+        "endTime": ""
+
+    },
+    "room12" :{
+        "type": "Multimedia Room",
+        "name" : "",
+        "capacity": 15,
+        "startTime": "",
+        "endTime": ""
+
+    }
+}
