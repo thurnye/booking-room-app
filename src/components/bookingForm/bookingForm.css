@@ -1,0 +1,7 @@
+.datepicker-modal, .timepicker-modal {
+    max-height: 347px !important;
+}
+
+.date .input-field.col label, .time .input-field.col label {
+    top: -0.9rem;
+}
