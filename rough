@@ -1,0 +1,28 @@
+ {/* <div className="col-md-5">
+                            <div class="col-12">
+                                <label for="validationDefault01" class="form-label">First name</label>
+                                <input type="text" class="form-control" id="validationDefault01" value="Mark" required//>
+                            </div>
+                            <div className="row">
+                                <div class="col-6">
+                                    <label for="validationDefault01" class="form-label">First name</label>
+                                    <input type="text" class="form-control" id="validationDefault01" value="Mark" required//>
+                                </div>
+                                <div class="col-6">
+                                    <label for="validationDefault01" class="form-label">First name</label>
+                                    <input type="text" class="form-control" id="validationDefault01" value="Mark" required//>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div class="col-6">
+                                    <label for="validationDefault01" class="form-label">First name</label>
+                                    <input type="text" class="form-control" id="validationDefault01" value="Mark" required//>
+                                </div>
+                                <div class="col-6">
+                                    <label for="validationDefault01" class="form-label">First name</label>
+                                    <input type="text" class="form-control" id="validationDefault01" value="Mark" required//>
+                                </div>
+                            </div>
+                            
+                            
+                        </div> */}
