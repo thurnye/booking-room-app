@@ -1,5 +1,4 @@
 
-.room-details .single-room-detail{
-
-    /* margin: 0 ; */
+.room-details .single-room-info p span:nth-child(2){
+    margin-left: 8px ;
 }

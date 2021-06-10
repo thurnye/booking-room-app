@@ -25,7 +25,7 @@ export default function Details() {
     return (
         <>
             this will be the item details and booking page
-            <Link to={{ pathname: `/my-reservation`}} className="btn explore">My Reservation</Link>
+            {/* <Link to={{ pathname: `/my-reservation`}} className="btn explore">My Reservation</Link> */}
             <section className="room-details">
                 <div className="container">
                     <div className="row info-booking"> 
@@ -33,7 +33,24 @@ export default function Details() {
                             <img src={result.imageThumbnail} className="card-img-top" alt="..."/>
                             <div className="card-body">
                                 <div className="single-room-info">
-                                    This will be the room info
+                                    <p>
+                                        <span className="checkMark" style={{color: 'green'}}><FontAwesomeIcon icon={['fas', 'check']}/></span> 
+                                        <span>  Available </span>
+                                    </p>
+                                    <p>
+                                        <span><FontAwesomeIcon icon={['fas', 'users']}/> </span> 
+                                        <span> {result.capacity}   Persons Maximum </span>
+                                    </p>
+
+                                        {result.capacity < 5 ? <p><span className="checkMark"><FontAwesomeIcon icon={['fas', 'video-slash']}/> </span> 
+                                        <span>  Multimedia </span></p>
+
+                                        : 
+                                        <p><span className="checkMark"><FontAwesomeIcon icon={['fas', 'video']}/> </span> 
+                                        <span>  Multimedia </span></p>
+                                        }
+
+
                                 </div>
                                 
                             </div>
