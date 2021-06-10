@@ -2,7 +2,7 @@ import React from 'react';
 import '@mobiscroll/react/dist/css/mobiscroll.min.css';
 import { Eventcalendar, getJson, toast } from '@mobiscroll/react';
 
-function App() {
+function Calendar() {
 
     const [myEvents, setEvents] = React.useState([]);
 
@@ -24,6 +24,22 @@ function App() {
         };
     }, []);
 
+    const responsive = React.useMemo(() => {
+        return {
+            xsmall: {
+                view: {
+                    schedule: { type: 'day' }
+                }
+            },
+            custom: { // Custom breakpoint
+                breakpoint: 900,
+                view: {
+                    schedule: { type: 'week' }
+                }
+            }
+        };
+    }, []);
+
     return (
         <Eventcalendar
             theme="ios" 
@@ -35,8 +51,9 @@ function App() {
             data={myEvents}
             view={view}
             onEventClick={onEventClick}
+            responsive={responsive}
        />
     ); 
 }
 
-export default App;
+export default Calendar;
