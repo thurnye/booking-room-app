@@ -3,32 +3,25 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 
-export const todoSlice = createSlice({
+export const reservationSlice = createSlice({
 	name: 'reservation',
-	initialState: [
-		{
-            event: '',
-            startDate: '',
-            startTime: '',
-            endDate: '',
-            endTime: ''
-    
-        }
-	],
+	initialState: [],
 	reducers: {
-		addreservation: (state, action) => {
-			const todo = {
-				id: new Date(),
-				title: action.payload.title,
-				completed: false,
+		addReservation: (state, action) => {
+			const newReservation = {
+                id:action.payload.id,
+                roomId: action.payload.idRoom,
+				event: action.payload.event,
+                startDate: action.payload.startDate,
+                endDate: action.payload.endDate,
 			};
-			state.push(todo);
+			state.push(newReservation);
 		},
 
 	},
 });
 
 
-export const { addreservation } = todoSlice.actions;
+export const { addReservation } = reservationSlice.actions;
 
-export default todoSlice.reducer;
+export default reservationSlice.reducer;
