@@ -36,23 +36,7 @@ export default function rooms() {
          
             <section className="rooms">
 
-                <button className="btn btn-primary hide" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                <FontAwesomeIcon icon={['fas', 'sliders-h']}/> 
-                </button>
                 
-                <div className="offcanvas offcanvas-start" tabIndex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-
-                    <div className="offcanvas-header">
-                        <h5 className="offcanvas-title" id="offcanvasExampleLabel">this will be the filter</h5>
-                        <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-
-                    <div className="offcanvas-body">
-                        this will be shown in mobile view
-                    </div>
-
-                </div>
-            
                 <div className="container">
                     <div className="row">
                         

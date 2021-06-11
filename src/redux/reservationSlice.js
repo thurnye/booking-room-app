@@ -17,11 +17,15 @@ export const reservationSlice = createSlice({
 			};
 			state.push(newReservation);
 		},
+		deleteReservation: (state, action) => {
+			console.log()
+			return state.filter((reservation) => reservation.id !== action.payload.id);
+		},
 
 	},
 });
 
 
-export const { addReservation } = reservationSlice.actions;
+export const { addReservation, deleteReservation } = reservationSlice.actions;
 
 export default reservationSlice.reducer;
