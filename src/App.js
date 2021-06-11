@@ -18,7 +18,6 @@ function App() {
   return (
     <React.Fragment>
       <Nav/>
-      <Router>
         <Switch>
         <Route path="/" exact render={() => (
             <Rooms />
@@ -30,7 +29,6 @@ function App() {
             <Reservation />
           )}/>
         </Switch>
-      </Router>
     </React.Fragment>
   )
 }

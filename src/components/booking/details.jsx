@@ -1,6 +1,5 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
-import {Link} from 'react-router-dom'
 import './details.css'
 import Rooms from '../../rooms'
 import Form from '../bookingForm/bookingForm'
@@ -18,13 +17,12 @@ export default function Details() {
     const roomId = params.id
 
 
-    // console.log(typeof roomId, roomId)
+    // find one room
     const result = data.find(({id})=> id === Number(roomId))
     
     
     return (
         <>
-            {/* <Link to={{ pathname: `/my-reservation`}} className="btn explore">My Reservation</Link> */}
             <section className="room-details">
                 <div className="container">
                     <div className="row info-booking"> 
@@ -48,10 +46,7 @@ export default function Details() {
                                         <p><span className="checkMark"><FontAwesomeIcon icon={['fas', 'video']}/> </span> 
                                         <span>  Multimedia </span></p>
                                         }
-
-
                                 </div>
-                                
                             </div>
                         </div>
                         <div className="col-md-1"></div>

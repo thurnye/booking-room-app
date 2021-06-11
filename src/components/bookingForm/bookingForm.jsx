@@ -1,12 +1,13 @@
 import React,{useState} from 'react';
-import "materialize-css/dist/css/materialize.min.css";
-import "materialize-css/dist/js/materialize.min.js";
-import { TimePicker } from "react-materialize";
-import './bookingForm.css'
 import $ from 'jquery'
 import { useDispatch } from 'react-redux';
-import { addReservation } from '../../redux/reservationSlice';
 import { useSelector } from 'react-redux';
+import "materialize-css/dist/css/materialize.min.css";
+import "materialize-css/dist/js/materialize.min.js";
+// import { TimePicker } from "react-materialize";
+import './bookingForm.css'
+import { addReservation } from '../../redux/reservationSlice';
+import Calendar from '../eventCalendar/eventCalendar'
 
 export default function BookingForm(roomId) {
 
@@ -38,15 +39,16 @@ export default function BookingForm(roomId) {
     }
     // handle submit
     const handleSubmit = (e) =>{
+
         e.preventDefault()
 
-        console.log(reservation)
+        // console.log(reservation)
         // check to see if we have reservations
         if (allReservations){
 
             // find/filter that particular room in all the reservation that has the room id
             const singleRoomReservation = allReservations.filter(({roomId})=> roomId === reservation.idRoom)
-            console.log(singleRoomReservation)
+            // console.log(singleRoomReservation)
 
             // check if the date and time is already booked. if it is return a message, 
             for(let i=0; i < singleRoomReservation.length; i++){
@@ -75,6 +77,7 @@ export default function BookingForm(roomId) {
                     
                 }
             }
+
         }
         // if no reservation for that room
         if (reservation) {
@@ -138,7 +141,11 @@ export default function BookingForm(roomId) {
                             </div>
                     </form>
                 </div>
+
+                This will be the calendar          
+
             </div>   
+                            <Calendar />
         </>
     )
 }

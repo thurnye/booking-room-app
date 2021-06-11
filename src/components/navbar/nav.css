@@ -5,3 +5,6 @@ nav{
 .navbar-light .navbar-brand {
     color: white;
 }
+.home-links a:first-child{
+    margin-right: 15px;
+}

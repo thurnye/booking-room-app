@@ -4,11 +4,9 @@ import './rooms.css'
 import Rooms from '../../rooms'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+
 export default function rooms() {
-    // console.log(allrooms)
-    // console.log(typeof allrooms.default)
     const data = Rooms
-    // console.log(Rooms)
 
    const items = ()=>{
         let roomlist =[];
