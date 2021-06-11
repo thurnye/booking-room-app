@@ -4,7 +4,7 @@ import './nav.css'
 export default function navbar() {
     return (
         <div>
-            <nav className="navbar navbar-light ">
+            <nav className="navbar" style={{backgroundColor: '#262738'}}>
                 <div className="container-fluid">
                     <span className="navbar-brand mb-0 h1">Conference Room Booking</span>
                 </div>

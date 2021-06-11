@@ -24,7 +24,6 @@ export default function Details() {
     
     return (
         <>
-            this will be the item details and booking page
             {/* <Link to={{ pathname: `/my-reservation`}} className="btn explore">My Reservation</Link> */}
             <section className="room-details">
                 <div className="container">
@@ -56,7 +55,7 @@ export default function Details() {
                             </div>
                         </div>
                         <div className="col-md-1"></div>
-                        <Form/>
+                        <Form roomId={roomId}/>
                 
                     </div>
                 </div>
