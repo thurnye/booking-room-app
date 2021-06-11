@@ -1,44 +1,15 @@
 import React from 'react'
 import {useContext} from 'react'
+import rooms from '../../rooms'
 
 //get all unique values
 const getUnique = (items, value) =>{
     return [...new Set(items.map(item => item[value]))]
 }
-export default function Roomfilter({rooms}) {
 
-    const context = useContext()
-    const {
-         type, capacity, 
-    } = context
-    // get unique types
-    let types = getUnique(rooms, 'type')
+export default function Roomfilter() {
 
-
-    // add all
-    types = ['all',...types]
-
-    //display the types
-types = types.map((item,index) =>{
-    return ( 
-    <option value={item} key={index}>
-    {item}
-    </option>
-    )
-})
-
-//for guest
-let people = getUnique(rooms,'capacity')
-people = people.map((item,index) => {
-    return (
-        <option key={index} value={item}>
-            {item}
-        </option>
-    )
-})
-
-
-
+    
 
 
     return (
@@ -47,31 +18,28 @@ people = people.map((item,index) => {
             <form className="filter-form">
                 {/* select type */}
                 <div className="form-group">
-                    <label htmlFor="type">room type</label>
-                    <select 
-                    name="type" 
-                    id="type" 
-                    value={type} 
-                    className="form-control" 
-                    // onChange={handleChange}
-                    >
-                        {types}
-                    </select>
+                    <div class="input-field col-md-6">
+                        <select>
+                        <option value="" disabled selected>Room Type</option>
+                        <option value="Basic">Basic</option>
+                        <option value="Quick Stand Up">Quick Standup</option>
+                        <option value="Multimedia">Multimedia</option>
+                        </select>
+                        <label>Materialize Select</label>
+                    </div>
                 </div>
                 {/* end of select type */}
 
                 {/* number of guest  */}
                 <div className="form-group">
-                    <label htmlFor="capacity">Guest</label>
-                    <select 
-                    name="capacity" 
-                    id="capacity" 
-                    value={capacity} 
-                    className="form-control" 
-                    // onChange={handleChange}
-                    >
-                        {people}
-                    </select>
+                    <div class="input-field col-md-6">
+                        <select>
+                        <option value="" disabled selected>Capacity</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        </select>
+                    </div>
                 </div>
                 {/* end of number of guest  */}
             </form>
