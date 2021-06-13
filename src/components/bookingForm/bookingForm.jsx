@@ -60,10 +60,10 @@ export default function BookingForm(roomId) {
                 //  "  nSD = incomingStartDate 
                 //  "  nED = incomingEndDate 
                 
-                let sD = new Date (singleRoomReservation[i].startDate).getTime()
-                let eD = new Date (singleRoomReservation[i].endDate).getTime()
-                let nSD = new Date (reservation.startDate).getTime()
-                let nED = new Date (reservation.endDate).getTime()
+                let sD = new Date (singleRoomReservation[i].start).getTime()
+                let eD = new Date (singleRoomReservation[i].end).getTime()
+                let nSD = new Date (reservation.start).getTime()
+                let nED = new Date (reservation.end).getTime()
 
                 // console.log('sD:', sD,'eD:', eD, 'nSD:', nSD,'nED:',  nED)
 
@@ -102,7 +102,7 @@ export default function BookingForm(roomId) {
                                 {/* Event Title */}
                                 <div className="row">
                                     <div className="input-field col s6">
-                                        <input id="event" name="event" type="text" className="validate" onChange={(e) => handleDateChange(e)}/>
+                                        <input id="event" name="title" type="text" className="validate" onChange={(e) => handleDateChange(e)}/>
                                         <label htmlFor="event">Event Title</label>
                                     </div>
                                 </div>
@@ -110,13 +110,13 @@ export default function BookingForm(roomId) {
                                 {/* Date */}
                                 <div className="row date">
                                     <div className="input-field col s12">
-                                        <input type="datetime-local" name="startDate" id="" className="datepicker"onChange={(e) => handleDateChange(e)}/>
+                                        <input type="datetime-local" name="start" id="" className="datepicker"onChange={(e) => handleDateChange(e)}/>
                                          {/* <input type="date" name="startDate" className="datepicker" onChange={(e) => handleDateChange(e)}></input> */}
                                         <label htmlFor="startDate">Start Date and Time</label>
                                     </div>
 
                                     <div className="input-field col s12">
-                                        <input type="datetime-local" name="endDate" className="datepicker" id="" onChange={(e) => handleDateChange(e)}/>
+                                        <input type="datetime-local" name="end" className="datepicker" id="" onChange={(e) => handleDateChange(e)}/>
                                     {/* <input type="date" name="endDate" className="datepicker" onChange={(e) => handleDateChange(e)}></input> */}
                                         <label htmlFor="endDate">End Date and Time</label>
                                     </div>
