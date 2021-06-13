@@ -11,16 +11,21 @@ export const reservationSlice = createSlice({
 			const newReservation = {
                 id:action.payload.id,
                 roomId: action.payload.idRoom,
-				event: action.payload.event,
-                startDate: action.payload.startDate,
-                endDate: action.payload.endDate,
+				title: action.payload.title,
+                start: action.payload.start,
+                end: action.payload.end,
 			};
 			state.push(newReservation);
 		},
 		deleteReservation: (state, action) => {
-			console.log()
-			return state.filter((reservation) => reservation.id !== action.payload.id);
-		},
+			// console.log(state)
+			console.log(action)
+			// state.filter((state) => {
+			// 	console.log(state)
+			// 	console.log(state.id !== '1623594903642')
+			// })
+			// console.log(state.find((state) => state.id !== action.payload.id))
+		}
 
 	},
 });

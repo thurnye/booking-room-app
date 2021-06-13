@@ -17,7 +17,7 @@ export default function Reservation() {
         e.preventDefault()
         const roomId = e.target.roomId.value
         console.log(roomId)
-        dispatch(deleteReservation({ roomId }));
+        dispatch(deleteReservation(roomId));
 
     }
     //  const result = myReservations.find(({id})=> id === Number(roomId))
@@ -27,12 +27,12 @@ export default function Reservation() {
         if (myReservations.length > 0){
             for(let el in myReservations){
                 // convert the date to readable date
-                const localStartDate = new Date(myReservations[el].startDate).toLocaleString('en-US', {
+                const localStart = new Date(myReservations[el].start).toLocaleString('en-US', {
                     weekday: 'short',   day: 'numeric', 
                     year: 'numeric',    month: 'long', 
                     hour: 'numeric',    minute: 'numeric',
                 });
-                const localEndDate = new Date(myReservations[el].endDate).toLocaleString('en-US', {
+                const localEnd = new Date(myReservations[el].end).toLocaleString('en-US', {
                     weekday: 'short',   day: 'numeric', 
                     year: 'numeric',    month: 'long', 
                     hour: 'numeric',    minute: 'numeric',
@@ -42,7 +42,7 @@ export default function Reservation() {
                     <div class="col s6 m6" key={myReservations[el].id}>
                         <div class="card blue-grey darken-1" style={{width: '20rem'}}>
                             <div class="card-content white-text">
-                                <span class="card-title">Event: {myReservations[el].event}</span>
+                                <span class="card-title">Event: {myReservations[el].title}</span>
                                 <hr></hr>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque modi earum labore, nostrum aliquam saepe quos. Eveniet sit ab quasi, sint itaque blanditiis suscipit in?</p>
                             </div>
@@ -51,8 +51,8 @@ export default function Reservation() {
                                 <button type='submit' class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">delete</i></button>
                             </form>
                             <div class="card-action" style={{color: 'white'}}>
-                                <p className="start">Start: {localStartDate}</p>
-                                <p className="end">End: {localEndDate}</p>
+                                <p className="start">Start: {localStart}</p>
+                                <p className="end">End: {localEnd}</p>
                             </div>
                         </div>
                     </div>
@@ -80,7 +80,6 @@ export default function Reservation() {
                       </div>}
                 </div>
 
-                
         
         
 
