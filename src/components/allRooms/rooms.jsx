@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom'
 import './rooms.css'
 import allRooms from '../../rooms'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import Filter from '../roomFilter/roomfilter'
 
 export default function Rooms() {
     const data = allRooms
@@ -34,38 +33,33 @@ export default function Rooms() {
         
    }
 
+//    get the filters
    const handleFilterChange = (e) => {
     setFilter({ [e.target.name]: e.target.value  });
-    // const key = e.target.name;
-    // const val = e.target.value;
-
-    // const newFilter = {...filter};
-    // newFilter[key] = val;
-    // setFilter(newFilter);
-
    }  
    
     const filteredRooms = data.filter(el => {
        
+        // filter by type
         if(filter.type){
             $('.all').hide()
             return el.type === filter.type
         }
+        // filter by capacity
         if(filter.capacity){
             $('.all').hide()
             return el.capacity === Number(filter.capacity)
         }
     })
 
-// console.log(filteredRooms)
     return (
         <>
-        {/* Filter */}
             <section className="filter-container">
             <div className="container">
                 <h5>Filter Room By:</h5>
                 <form action="">
                     <div className="row" style={{alignItems: "flex-end"}} >
+                        {/* filter by type */}
                         <div className="col-md-6">
                             <h6>Type of room</h6>
                             <select className="form-select" aria-label="Default select example" name="type" onChange={(e)=>handleFilterChange(e)}>
@@ -75,6 +69,7 @@ export default function Rooms() {
                                 <option value="Multimedia Room">Multimedia Room</option>
                             </select>
                         </div>
+                        {/* filter by Capacity */}
                         <div className="col-md-6">
                             <h6>Capacity</h6>
                             <select className="form-select" aria-label="Default select example" name="capacity" onChange={(e)=>handleFilterChange(e)}>
@@ -95,8 +90,6 @@ export default function Rooms() {
             <section className="rooms">
                 <div className="container">
                     <div className="row">
-                        
-
                     <article className=" room-items">
                         <div className="row row-cols-1 row-cols-md-3 g-4">
                             {
@@ -106,13 +99,12 @@ export default function Rooms() {
                     </article>
                     </div>
                 </div>
-            
             </section>
+
+            {/* filter items */}
             <section className="rooms">
                 <div className="container">
                     <div className="row">
-                        
-
                     <article className=" room-items">
                         <div className="row row-cols-1 row-cols-md-3 g-4">
                             {

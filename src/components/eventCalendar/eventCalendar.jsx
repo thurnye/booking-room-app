@@ -1,12 +1,12 @@
 import React,{useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import FullCalendar, { formatDate } from '@fullcalendar/react'
+import FullCalendar  from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import { addReservation } from '../../redux/reservationSlice';
 import {deleteReservation} from '../../redux/reservationSlice'
-import { INITIAL_EVENTS, createEventId } from './event-utils'
+import { INITIAL_EVENTS} from './event-utils'
 import './eventCal.css'
 
 
@@ -30,11 +30,11 @@ export default function DemoApp(props) {
       <div className='demo-app-sidebar'>
         <div className='demo-app-sidebar-section'>
           <h2>Instructions</h2>
-          <ul>
-            <li>Select dates and you will be prompted to create a new event</li>
-            <li>Drag, drop, and resize events</li>
-            <li>Click an event to delete it</li>
-          </ul>
+          <p>
+            Select dates and you will be prompted to create a new event
+            Drag, drop, and resize events
+            Click an event to delete it
+          </p>
         </div>
      
         <div className='demo-app-sidebar-section'>
@@ -77,6 +77,7 @@ export default function DemoApp(props) {
                 roomId: roomId
             })
         );
+        localStorage.setItem('events', JSON.stringify(myReservations))
     }
     }
 
@@ -101,6 +102,7 @@ export default function DemoApp(props) {
     }
   }
 
+//   store the event to state
   const handleEvents = (events, selectInfo) => {
     setState({
       currentEvents: events
@@ -109,7 +111,7 @@ export default function DemoApp(props) {
    
     
   }
-
+// render the event content in the calendar
   const renderEventContent = (eventInfo) => {
     return (
       <>
@@ -139,7 +141,6 @@ export default function DemoApp(props) {
             </li>
             <li>
                 <b>End: {localEndDate}</b>
-
             </li>
         <hr/>
         </div>

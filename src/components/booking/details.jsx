@@ -4,7 +4,7 @@ import './details.css'
 import Rooms from '../../rooms'
 import Form from '../bookingForm/bookingForm'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import Calendar from '../eventCalendar/eventCalendar'
 
 
 export default function Details() {
@@ -38,6 +38,10 @@ export default function Details() {
                                         <span><FontAwesomeIcon icon={['fas', 'users']}/> </span> 
                                         <span> {result.capacity}   Persons Maximum </span>
                                     </p>
+                                    <p>
+                                        <span><FontAwesomeIcon icon={['fas', 'chess-rook']}/> </span> 
+                                        <span> {result.type} Room  </span>
+                                    </p>
 
                                         {result.capacity < 5 ? <p><span className="checkMark"><FontAwesomeIcon icon={['fas', 'video-slash']}/> </span> 
                                         <span>  Multimedia </span></p>
@@ -49,8 +53,8 @@ export default function Details() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-1"></div>
-                        <Form roomId={roomId}/>
+                        <div className="col-md-12"></div>
+                        <Calendar roomId={roomId}/>
                 
                     </div>
                 </div>
