@@ -1,42 +1,29 @@
 import React,{useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import FullCalendar, { formatDate } from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import { useSelector } from 'react-redux';
-// import { INITIAL_EVENTS, createEventId } from './event-utils'
+import { addReservation } from '../../redux/reservationSlice';
+import {deleteReservation} from '../../redux/reservationSlice'
+import { INITIAL_EVENTS, createEventId } from './event-utils'
 import './eventCal.css'
 
 
 
-export default function DemoApp() {
+export default function DemoApp(props) {
+    const roomId = props.roomId.roomId 
 
   const [state, setState] = useState({
     weekendsVisible: true,
     currentEvents: []
   })
 
-
-  const events = []
-//   Push the events in the array
   const myReservations = useSelector((state) => state.newReservations);
 
 
-//   const displayEvent = () => {
-//     for(let evt in myReservations){
-//         const start = new Date(myReservations[evt].start).toISOString().replace(/T.*$/, '') 
-//         const end = new Date(myReservations[evt].end).toISOString().replace(/T.*$/, '') 
-  
-//         const event = {
-//           id: myReservations[evt].id,
-//           title: myReservations[evt].title,
-//           start: start,
-//           end: end
-//         }
-//         events.push(event)
-//     }
-//   }
- 
+    // use the dispatch to send the data to redux.
+    const dispatch = useDispatch();
 
   const renderSidebar= () => {
     return (
@@ -49,16 +36,7 @@ export default function DemoApp() {
             <li>Click an event to delete it</li>
           </ul>
         </div>
-        {/* <div className='demo-app-sidebar-section'>
-          <label>
-            <input
-              type='checkbox'
-              checked={state.weekendsVisible}
-              onChange={handleWeekendsToggle}
-            ></input>
-            toggle weekends
-          </label>
-        </div> */}
+     
         <div className='demo-app-sidebar-section'>
           <h2>All Events ({state.currentEvents.length})</h2>
           <ul>
@@ -69,64 +47,70 @@ export default function DemoApp() {
     )
   }
 
-//   const handleWeekendsToggle = () => {
-//     setState({
-//       weekendsVisible: !state.weekendsVisible
-//     })
-//   }
 
+// Add the event to redux state management
   const handleDateSelect =   (selectInfo) => {
-      console.log(selectInfo)
     let title = prompt('Please enter a new title for your event')
     let calendarApi = selectInfo.view.calendar
 
     calendarApi.unselect() // clear date selection
-
     if (title) {
-      calendarApi.addEvent({
-        id: Date.now(),
+        const id = new Date().getTime()
+     const event =  calendarApi.addEvent({
+         id: id,
         title,
         start: selectInfo.startStr,
         end: selectInfo.endStr,
-        allDay: selectInfo.allDay
+        allDay: selectInfo.allDay,
+        groupId: roomId,
+        roomId: roomId
       })
+      if (event) {
+        // add the event to the state
+        dispatch(
+            addReservation({
+                id: id,
+                title,
+                start: selectInfo.startStr,
+                end: selectInfo.endStr,
+                allDay: selectInfo.allDay,
+                roomId: roomId
+            })
+        );
     }
-    if(myReservations.length >= 0){
-        for(let evt in myReservations){
-            // console.log(new Date(myReservations[evt].startDate))
-            const start = new Date(myReservations[evt].start).toISOString().replace(/T.*$/, '') 
-            const end = new Date(myReservations[evt].end).toISOString().replace(/T.*$/, '')
+    }
 
-            if(myReservations[evt].title) {
-                calendarApi.addEvent({
-                    id: myReservations[evt].id,
-                    title: myReservations[evt].title,
-                    start: start,
-                    end: end,
-                    // allDay: selectInfo.allDay
-                })
-            }
-        }
-    }
+
+    
   }
 
+
+//   Remove the event from list of event and update redux state management
   const handleEventClick = (clickInfo) => {
-    //   const confirm = confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)
-    // if (confirm) {
-    //   clickInfo.event.remove()
-    // }
+
+    const confirm = window.confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`);
+    if (confirm) {
+        // get the id of the event
+        const id = clickInfo.event.id
+
+        // remove from calendar
+      clickInfo.event.remove()
+
+    //   remove form redux
+    dispatch(deleteReservation(id));
+    }
   }
 
-  const handleEvents = (events) => {
-   
-    //   console.log(events)
+  const handleEvents = (events, selectInfo) => {
     setState({
       currentEvents: events
     })
+
+   
+    
   }
 
   const renderEventContent = (eventInfo) => {
-    // console.log(eventInfo)
     return (
       <>
         <b>{eventInfo.timeText}</b>
@@ -135,15 +119,8 @@ export default function DemoApp() {
     )
   }
   
+//   Display the Upcoming events
   const renderSidebarEvent = (event) => {
-
-    //   console.log({
-    //       title: event.title,
-    //       start: event.start,
-    //       end: event.end,
-    //       id: event.id
-    //   })
-   
     const localStartDate = new Date(event.start).toLocaleString('en-US', {
         weekday: 'short',   day: 'numeric', 
         year: 'numeric',    month: 'long', 
@@ -166,30 +143,14 @@ export default function DemoApp() {
             </li>
         <hr/>
         </div>
-     
     )
   }
 
-
-//   const displayEvent = () => {
-    for(let evt in myReservations){
-        const start = new Date(myReservations[evt].start).toISOString().replace(/T.*$/, '') 
-        const end = new Date(myReservations[evt].end).toISOString().replace(/T.*$/, '') 
-  
-        const event = {
-          id: myReservations[evt].id,
-          title: myReservations[evt].title,
-          start: start,
-          end: end
-        }
-        events.push(event)
-    }
-//   }
-
 //   render() {
     return (
-      <div className='demo-app'>
-        {renderSidebar()}
+        <> 
+          {renderSidebar()}
+        <div className='demo-app'>
         <div className='demo-app-main'>
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
@@ -204,7 +165,7 @@ export default function DemoApp() {
             selectMirror={true}
             dayMaxEvents={true}
             // weekends={state.weekendsVisible}
-            initialEvents={events} // alternatively, use the `events` setting to fetch from a feed
+            initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
             select={handleDateSelect}
             eventContent={renderEventContent} // custom render function
             eventClick={handleEventClick}
@@ -217,26 +178,10 @@ export default function DemoApp() {
           />
         </div>
       </div>
+      </>
     )
 //   }
 
 
 }
 
-// function renderEventContent(eventInfo) {
-//   return (
-//     <>
-//       <b>{eventInfo.timeText}</b>
-//       <i>{eventInfo.event.title}</i>
-//     </>
-//   )
-// }
-
-// function renderSidebarEvent(event) {
-//   return (
-//     <li key={event.id}>
-//       <b>{formatDate(event.start, {year: 'numeric', month: 'short', day: 'numeric'})}</b>
-//       <i>{event.title}</i>
-//     </li>
-//   )
-// }

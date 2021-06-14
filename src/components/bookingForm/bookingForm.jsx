@@ -87,7 +87,7 @@ export default function BookingForm(roomId) {
 		}
     }
 
-
+        
     
     return (
         <>
@@ -145,7 +145,7 @@ export default function BookingForm(roomId) {
                 This will be the calendar          
 
             </div>   
-                            <Calendar />
+                            <Calendar roomId={roomId}/>
         </>
     )
 }
