@@ -12,11 +12,11 @@ export default function Reservation() {
     // get all the reservations made by the user
     const myReservations = useSelector((state) => state.newReservations);
 
+
      // find one room
     const cancelReservation = (e) => {
         e.preventDefault()
         const roomId = e.target.roomId.value
-        console.log(roomId)
         dispatch(deleteReservation(roomId));
 
     }
